@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.SyncStateContract
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.absoluteValue
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,7 +50,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     companion object {
          var preferences: SharedPreferences? = null
+        fun diagonalDifference(arr: Array<Array<Int>>): Int {
+            var a:Int =0
+            var b:Int = 0
+            val size = arr.size
+
+            for (i in arr.indices) {
+                for (j in arr.indices) {
+                    if (i==j) {a += arr[i][j]}
+                    if (i==size-j){b+= arr[i][j]}
+
+                }
+            }
+
+/*
+
+            val final =  if (Math.abs(a)>Math.abs(b)) {
+                Math.abs(a)-Math.abs(b)
+            }
+            else {
+                Math.abs(b)-Math.abs(a)
+            }*/val final =Math.abs(a-b)
+
+                        return final
+        }
     }
 }
