@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,13 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         context = this
 
-        preferences = getSharedPreferences(Constants.BOOK_PREFERENCES, Context.MODE_PRIVATE)
+        preferences = getSharedPreferences(BOOK_PREFERENCES, Context.MODE_PRIVATE)
 
         add_book_button.setOnClickListener {
             val intent = Intent(context, EditBookActivity::class.java)
             val nextId = BookRepo.nextId().toString()
-            intent.putExtra(Constants.NEW_BOOK_TAG, nextId)
-            startActivityForResult(intent, Constants.NEW_BOOK_REQUEST_CODE)
+            intent.putExtra(NEW_BOOK_TAG, nextId)
+            startActivityForResult(intent, NEW_BOOK_REQUEST_CODE)
         }
 
     }
@@ -36,12 +37,12 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == Constants.NEW_BOOK_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == NEW_BOOK_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
                 BooksController.handleEditActivityResult(data)
             }
         }
-        if (requestCode == Constants.EDIT_BOOK_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == EDIT_BOOK_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
                 BooksController.handleEditActivityResult(data)
             }

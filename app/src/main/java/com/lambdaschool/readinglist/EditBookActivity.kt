@@ -37,8 +37,8 @@ class EditBookActivity : AppCompatActivity() {
         cancel_button.setOnClickListener { cancel() }
 
         val intent = intent
-        id = intent.getStringExtra(Constants.NEW_BOOK_TAG)
-        val bookCsv = intent.getStringExtra(Constants.EDIT_BOOK_TAG)
+        id = intent.getStringExtra(NEW_BOOK_TAG)
+        val bookCsv = intent.getStringExtra(EDIT_BOOK_TAG)
         if (bookCsv != null) {
             val book = Book(bookCsv)
             book_name_text.setText(book.title)
@@ -62,7 +62,7 @@ class EditBookActivity : AppCompatActivity() {
         val book = Book(id!!, bookName, bookReason, hasBeenRead)
         val bookCsv = book.toCsvString()
         val intent = Intent()
-        intent.putExtra(Constants.EDIT_BOOK_TAG, bookCsv)
+        intent.putExtra(EDIT_BOOK_TAG, bookCsv)
         setResult(RESULT_OK, intent)
         finish()
     }
