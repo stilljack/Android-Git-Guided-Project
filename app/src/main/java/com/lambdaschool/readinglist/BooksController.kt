@@ -16,8 +16,8 @@ object BooksController {
         if (book.isHasBeenRead) bookView.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
         bookView.setOnClickListener {
             val intent = Intent(context, EditBookActivity::class.java)
-            intent.putExtra(Constants.EDIT_BOOK_TAG, book.toCsvString())
-            (context as Activity).startActivityForResult(intent, Constants.EDIT_BOOK_REQUEST_CODE)
+            intent.putExtra(EDIT_BOOK_TAG, book.toCsvString())
+            (context as Activity).startActivityForResult(intent, EDIT_BOOK_REQUEST_CODE)
         }
         return bookView
     }
@@ -33,7 +33,7 @@ object BooksController {
     }
 
     fun handleEditActivityResult(intent: Intent) {
-        val bookCsv = intent.getStringExtra(Constants.EDIT_BOOK_TAG)
+        val bookCsv = intent.getStringExtra(EDIT_BOOK_TAG)
         val book = Book(bookCsv)
         BookRepo.updateBook(book)
     }
