@@ -2,7 +2,7 @@
 <resources>
     <!-- todo 7: In a separate branch, update the color scheme of the app -->
     <!-- todo 8: Open a pull request for this update too --> 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0288D1</color>
+    <color name="colorAccent">#CDDC39</color>
 </resources>
